@@ -17,15 +17,14 @@ Dernière modification: 2018-03-19
 
 typedef struct t_pin_sortie t_pin_sortie;
 
-struct t_entree{
+typedef struct t_entree{
 	int id; //Identifiant numérique de l'entrée
 			//doit être unique parmi les entrées 
 			//du circuit
 	char *nom; //Nom de l'entrée
 	t_pin_sortie *pin; //Pin de sortie
-} ;
+} t_entree;
 
-typedef struct t_entree t_entree;
 
 
 /*
