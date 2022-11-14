@@ -34,10 +34,9 @@ t_entree* t_entree_init(int num)
 
 void t_entree_destroy(t_entree* entree)
 {
-	//set tout les variables de la structure a NULL
-	entree->id = NULL;
-	entree->nom = NULL;
-	entree->pin = NULL;
+	//free
+	free(entree);
+	t_pin_sortie_destroy(entree->pin);
 }
 
 t_pin_sortie* t_entree_get_pin(t_entree* entree)
