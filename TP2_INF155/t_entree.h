@@ -11,9 +11,10 @@ Dernière modification: 2018-03-19
 
 #include "t_pin_sortie.h"
 
-#define NOM_ENTREE_TAILLE_MAX 10 //Taille maximale du nom
-								 //de l'entrée
-
+#define NOM_ENTREE_TAILLE_MAX 10 //Taille maximale du nom de l'entrée
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdlib.h>
+#include <stdio.h>
 
 typedef struct t_pin_sortie t_pin_sortie;
 
