@@ -15,28 +15,38 @@ Date: 2022-11-14
 t_entree* t_entree_init(int num)
 {
 
-	t_entree nouvelle_entree; //Creation d'une nouvelle entree
+	t_entree* nouvelle_entree; //Creation d'une nouvelle entree
 	char nom[4] = "E"; //Creaton d'un char commencant toujours par E et qui ne depassera 4 caractere (E + les 2 chiffres possibles + \0)
 
+	nouvelle_entree = (t_entree*)malloc(sizeof(t_entree));
+
+	if (nouvelle_entree == NULL) //si le malloc n'a pas reussi a allouer de la memoire
+	{
+		printf("Pas reussi a allouer de la memoire.\n");
+		system("pause");
+		exit(EXIT_FAILURE);
+	}
+
 	//set l'id au num fourni
-	nouvelle_entree.id = num;
+	nouvelle_entree->id = num;
 
 	//concatener le nom et l'id
-	strcat(nom, nouvelle_entree.id);
-	nouvelle_entree.nom = nom;
+	strcat(nom, nouvelle_entree->id);
+	nouvelle_entree->nom = nom;
 
 	//initialiser une nouvelle pin de sortie
-	nouvelle_entree.pin = t_pin_sortie_init;
+	nouvelle_entree->pin = t_pin_sortie_init;
 
-	return &nouvelle_entree;
+	return nouvelle_entree;
 
 }
 
 void t_entree_destroy(t_entree* entree)
 {
+
+	t_pin_sortie_destroy(entree->pin);
 	//free
 	free(entree);
-	t_pin_sortie_destroy(entree->pin);
 }
 
 t_pin_sortie* t_entree_get_pin(t_entree* entree)
