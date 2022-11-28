@@ -30,16 +30,19 @@ t_circuit* t_circuit_init(void)
 
 void t_circuit_destroy(t_circuit* circuit)
 {
-	for (int i = 0; i < MAX_ENTREES; i++)
+	for (int i = 0; i < circuit->nb_portes; i++)
 	{
 		t_porte_destroy(circuit->portes[i]);
-		t_entree_destroy(circuit->entrees[i]);
-		t_sortie_destroy(circuit->sorties[i]);
 	}
 
-	for (int i = MAX_ENTREES; i < CIRCUIT_MAX_PORTES; i++)
+	for (int i = 0; i < circuit->nb_entrees; i++)
 	{
-		t_porte_destroy(circuit->portes[i]);
+		t_porte_destroy(circuit->entrees[i]);
+	}
+
+	for (int i = 0; i < circuit->nb_sorties; i++)
+	{
+		t_porte_destroy(circuit->sorties[i]);
 	}
 
 	free(circuit);
@@ -103,17 +106,19 @@ t_sortie* t_circuit_ajouter_sortie(t_circuit* circuit)
 
 int t_circuit_est_valide(t_circuit* circuit)
 {
-
+	//boucle qui regarde si chaque pin de sortie de chaque entree est relier
 	for (int i = 0; i < circuit->nb_entrees; i++)
 	{
 		if (!t_pin_sortie_est_reliee(circuit->entrees[i]->pin))
 			return 0;
 	}
+	//boucle qui regarde si chaque pin d'entree de chaque sortie est relier
 	for (int i = 0; i < circuit->nb_sorties; i++)
 	{
 		if (!t_pin_sortie_est_reliee(circuit->sorties[i]->pin))
 			return 0;
 	}
+
 	for (int i = 0; i < circuit->nb_portes; i++)
 	{
 		for (int k = 0; k < circuit->portes[i]->nb_entrees; k++)
@@ -126,5 +131,14 @@ int t_circuit_est_valide(t_circuit* circuit)
 			return 0;
 	}
 	return 1;
+
+}
+
+int t_circuit_appliquer_signal(t_circuit* circuit, int signal[], int nb_bits)
+{
+	if (nb_bits < circuit->nb_entrees) //verification si le nb_bits est plus grand ou egal au nombre d'entree
+	{
+		return 0;
+	}
 
 }
