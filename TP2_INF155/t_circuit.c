@@ -165,3 +165,47 @@ void t_circuit_reset(t_circuit* circuit)
 		t_sortie_reset(circuit->sorties[i]);
 	}
 }
+
+int t_circuit_propager_signal(t_circuit* circuit)
+{
+	int nb_iterations = 0;
+	t_porte* porte_courante;
+	t_file_porte* file;
+
+	file = t_file_porte_initialiser(circuit->nb_portes);
+
+	if (!t_circuit_est_valide(circuit))
+	{
+		return 0;
+	}
+
+	for (int i = 0; i < circuit->nb_entrees; i++)
+	{
+		t_entree_propager_signal(circuit->entrees[i]);
+	}
+
+	for (int i = 0; i < circuit->nb_portes; i++)
+	{
+		file->nb_elts++;
+		file->tab[i] = circuit->portes[i];
+
+	}
+
+	while (file->nb_elts >= 0 && nb_iterations < pow(circuit->nb_portes, 2))
+	{
+		porte_courante = t_file_porte_defiler(file);
+		t_porte_propager_signal(porte_courante);
+
+		if (!t_porte_propager_signal(porte_courante))
+		{
+			t_file_porte_enfiler(file, porte_courante);
+		}
+		nb_iterations++;
+	}
+
+	if (nb_iterations == pow(circuit->nb_portes, 2))
+	{
+		return 0; //Il a une boucle dans le signal
+	}
+	return 1; //Le signal a propager
+}
