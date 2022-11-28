@@ -2,7 +2,7 @@
 Titre: t_entree.c
 Description: Programme qui implémente les fonctions de la structure t_entree.
 
-Auteur: Nathan Guindon Durocher
+Auteur: Nathan Guindon Durocher - William Blais Di Quinzio - Tri Tam Phan
 Date: 2022-11-14
 */
 
