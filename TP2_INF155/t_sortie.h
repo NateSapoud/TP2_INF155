@@ -12,6 +12,7 @@ Dernière modification: 2018-03-19
 
 #include "t_pin_entree.h"
 
+
 typedef struct t_pin_entree t_pin_entree;
 
 #define NOM_SORTIE_TAILLE_MAX 10 //Taille maximale du nom
@@ -80,6 +81,11 @@ Paramètres:
 Retour: Booléen : Vrai si la liaison a bien été effectuée. Faux sinon. 
 */
 int t_sortie_relier(t_sortie *dest, const t_pin_sortie *source);
+
+
+
+
+
 
 /*
 Fonction: T_SORTIE_EST_RELIEE
