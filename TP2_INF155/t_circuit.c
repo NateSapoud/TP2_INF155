@@ -37,12 +37,12 @@ void t_circuit_destroy(t_circuit* circuit)
 
 	for (int i = 0; i < circuit->nb_entrees; i++)
 	{
-		t_porte_destroy(circuit->entrees[i]);
+		t_entree_destroy(circuit->entrees[i]);
 	}
 
 	for (int i = 0; i < circuit->nb_sorties; i++)
 	{
-		t_porte_destroy(circuit->sorties[i]);
+		t_sortie_destroy(circuit->sorties[i]);
 	}
 
 	free(circuit);
@@ -141,4 +141,27 @@ int t_circuit_appliquer_signal(t_circuit* circuit, int signal[], int nb_bits)
 		return 0;
 	}
 
+	for (int i = 0; i < circuit->nb_entrees; i++)
+	{
+		circuit->entrees[i]->pin->valeur = signal[i];
+	}
+	return 1;
+}
+
+void t_circuit_reset(t_circuit* circuit)
+{
+	for (int i = 0; i < circuit->nb_portes; i++)
+	{
+		t_porte_reset(circuit->portes[i]);
+	}
+
+	for (int i = 0; i < circuit->nb_entrees; i++)
+	{
+		t_entree_reset(circuit->entrees[i]);
+	}
+
+	for (int i = 0; i < circuit->nb_sorties; i++)
+	{
+		t_sortie_reset(circuit->sorties[i]);
+	}
 }
