@@ -46,9 +46,7 @@ t_porte* t_porte_init(int id, e_types_portes type)
 }
 
 void t_porte_destroy(t_porte* porte)
-{
-	
-	free(porte);	//Destruction de la memoire
+{	
 	t_pin_sortie_destroy(porte->sortie);
 	t_pin_entree_destroy(porte->entrees[0]);
 
@@ -56,6 +54,7 @@ void t_porte_destroy(t_porte* porte)
 	{
 		t_pin_entree_destroy(porte->entrees[1]); //Si la porte est compose de plus d'une entree
 	}
+	free(porte);	//Destruction de la memoire
 }
 
 void t_porte_calculer_sorties(t_porte* porte)
@@ -175,4 +174,16 @@ int t_porte_propager_signal(t_porte* porte)
 			t_pin_sortie_propager_signal(porte->sortie); //Si nous avons une porte NON
 		}
 	}
+}
+
+void t_circuit_destroy(t_circuit* circuit)
+{
+	for (int i = 0; i <= CIRCUIT_MAX_PORTE; i++)
+	{
+		t_porte_destroy(circuit->portes[i]);
+		t_entree_destroy(circuit->entrees[i]);
+		t_sortie_destroy(circuit->sorties[i]);
+	}
+
+	free(circuit);
 }
