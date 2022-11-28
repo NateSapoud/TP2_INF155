@@ -116,6 +116,7 @@ int t_porte_relier(t_porte* dest, int num_entree, const t_pin_sortie* source)
 	}
 
 	t_pin_entree_relier(dest->entrees[num_entree], source->valeur); //Liaision de l'entree et sortie
+	return 1;
 }
 
 int t_porte_est_reliee(t_porte* porte)
@@ -176,14 +177,3 @@ int t_porte_propager_signal(t_porte* porte)
 	}
 }
 
-void t_circuit_destroy(t_circuit* circuit)
-{
-	for (int i = 0; i <= CIRCUIT_MAX_PORTE; i++)
-	{
-		t_porte_destroy(circuit->portes[i]);
-		t_entree_destroy(circuit->entrees[i]);
-		t_sortie_destroy(circuit->sorties[i]);
-	}
-
-	free(circuit);
-}
