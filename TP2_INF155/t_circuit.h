@@ -31,11 +31,11 @@ typedef enum e_types_portes e_types_portes;
 Définit le type t_circuit qui permet de stocker l'information relative à un circuit. 
 */
 struct t_circuit {
-	//Tableu statique qui stocke des pointeurs vers les entrées incluses dans le circuit
+	//Tableau statique qui stocke des pointeurs vers les entrées incluses dans le circuit
 	t_entree *entrees[MAX_ENTREES]; 
-	//Tableu statique qui stocke des pointeurs vers les sorties incluses dans le circuit
+	//Tableau statique qui stocke des pointeurs vers les sorties incluses dans le circuit
 	t_sortie *sorties[MAX_SORTIES]; 
-	//Tableu statique qui stocke des pointeurs vers les portes incluses dans le circuit
+	//Tableau statique qui stocke des pointeurs vers les portes incluses dans le circuit
 	t_porte *portes[CIRCUIT_MAX_PORTES]; 
 	//Nombre d'entrées dans le tableau d'entrées du circuit
 	int nb_entrees;
