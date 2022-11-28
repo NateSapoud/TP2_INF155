@@ -7,7 +7,8 @@ Note: Ce module a été conçu de sorte à ce qu'il soit facielement extensible pour
 	  abandonnée mais il n'en demeure pas moins un point d'évolution potentiel du projet.
 	  Les étudiants courageux sont encouragés à considérer, voir implémenter cette évolution.
 Auteur: William Blais Di Quinzio
-
+		Nathan Guindon Durocher
+		Tri-Tam Phan
 Dernière modification: 2022-11-14
 */
 
