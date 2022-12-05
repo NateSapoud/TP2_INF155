@@ -45,6 +45,7 @@ t_sortie* t_sortie_init(int num)
 void t_sortie_destroy(t_sortie* sortie)
 {
 	t_pin_sortie_destroy(sortie->pin);
+	free(sortie->nom);
 	free(sortie);
 }
 

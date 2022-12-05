@@ -51,7 +51,7 @@ void t_entree_destroy(t_entree* entree)
 {
 
 	t_pin_sortie_destroy(entree->pin);
-	//free
+	free(entree->nom);
 	free(entree);
 }
 

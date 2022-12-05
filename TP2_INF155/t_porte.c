@@ -64,6 +64,7 @@ void t_porte_destroy(t_porte* porte)
 	{
 		t_pin_entree_destroy(porte->entrees[1]); //Si la porte est compose de plus d'une entree
 	}
+	free(porte->nom);
 	free(porte);	//Destruction de la memoire
 }
 
