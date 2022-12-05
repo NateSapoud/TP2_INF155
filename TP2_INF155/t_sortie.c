@@ -44,19 +44,20 @@ t_sortie* t_sortie_init(int num)
 
 void t_sortie_destroy(t_sortie* sortie)
 {
-	t_pin_sortie_destroy(sortie->pin);
-	free(sortie);
+	t_pin_sortie_destroy(sortie->pin); //va libérer la memoire occupée par la pin de la fonction "sortie"
+	free(sortie); //libère le bloc de memoire alloue dynamiquement pour la fonction "sortie"
 }
 
 t_pin_entree* t_sortie_get_pin(t_sortie* sortie)
 {
-	return sortie->pin;
+	return sortie->pin; //va retourner un pointeur de la sortie vers l'entree
 }
 
 int t_sortie_relier(t_sortie* dest, const t_pin_sortie* source) 
 {
 	t_pin_entree_relier(dest->pin,source);
 
+	//s'il y a une liaison de fait, va retourner vrai (1). Sinon, s'il n'y a pas de lien, retourne faux (0)
 	if (t_pin_entree_est_reliee(dest->pin))
 		return 1;
 	else
@@ -67,6 +68,7 @@ int t_sortie_relier(t_sortie* dest, const t_pin_sortie* source)
 int t_sortie_est_reliee(t_sortie* sortie)
 {
 
+	//s'il y a une liaison de fait, va retourner vrai (1). Sinon, s'il n'y a pas de lien, retourne faux (0)
 	if (t_pin_entree_est_reliee(sortie))
 	{
 		return 1;
@@ -80,12 +82,12 @@ int t_sortie_est_reliee(t_sortie* sortie)
 
 void t_sortie_reset(t_sortie* sortie)
 {
-	t_pin_entree_reset(sortie->pin);
+	t_pin_entree_reset(sortie->pin); //va réinitialiser la fonction "sortie"
 }
 
 int t_sortie_get_valeur(t_sortie* sortie)
 {
-	t_pin_entree_get_valeur(sortie->pin);
+	t_pin_entree_get_valeur(sortie->pin); //va prendre la valeur de la sortie 
 }
 
 
