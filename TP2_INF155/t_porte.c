@@ -73,11 +73,11 @@ void t_porte_calculer_sorties(t_porte* porte)
 	{
 		if (porte->entrees[0] == 0)
 		{
-			porte->sortie = 1;
+			porte->sortie->valeur = 1;
 		}
 		else
 		{
-			porte->sortie = 0;
+			porte->sortie->valeur = 0;
 		}
 	}
 
@@ -85,11 +85,11 @@ void t_porte_calculer_sorties(t_porte* porte)
 	{
 		if (porte->entrees[0] == 1 && porte->entrees[1] == 1)
 		{
-			porte->sortie = 1;
+			porte->sortie->valeur = 1;
 		}
 		else
 		{
-			porte->sortie = 0;
+			porte->sortie->valeur = 0;
 		}
 	}
 
@@ -97,11 +97,11 @@ void t_porte_calculer_sorties(t_porte* porte)
 	{
 		if (porte->entrees[0] == 0 && porte->entrees[1] == 0)
 		{
-			porte->sortie = 0;
+			porte->sortie->valeur = 0;
 		}
 		else
 		{
-			porte->sortie = 1;
+			porte->sortie->valeur = 1;
 		}
 	}
 
@@ -109,11 +109,11 @@ void t_porte_calculer_sorties(t_porte* porte)
 	{
 		if (porte->entrees[0] != porte->entrees[1])
 		{
-			porte->sortie = 1;
+			porte->sortie->valeur = 1;
 		}
 		else
 		{
-			porte->sortie = 0;
+			porte->sortie->valeur = 0;
 		}
 	}
 }
@@ -177,11 +177,13 @@ int t_porte_propager_signal(t_porte* porte)
 		{
 			if (t_pin_entree_est_reliee(porte->entrees[1]) == 1) //Verification que la pin 2 est utiliser
 			{
+				t_porte_calculer_sorties(porte);
 				t_pin_sortie_propager_signal(porte->sortie); //Propagation de la valeurs a notre sortie
 			}
 		}
 		else
 		{
+			t_porte_calculer_sorties(porte);
 			t_pin_sortie_propager_signal(porte->sortie); //Si nous avons une porte NON
 		}
 	}
