@@ -24,6 +24,9 @@ t_circuit* t_circuit_init(void)
 		exit(EXIT_FAILURE);
 	}
 
+	nouveau_circuit->nb_entrees = 0;
+	nouveau_circuit->nb_portes = 0;
+	nouveau_circuit->nb_sorties = 0;
 
 	return nouveau_circuit;
 }
