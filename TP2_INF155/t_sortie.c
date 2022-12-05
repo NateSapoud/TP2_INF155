@@ -45,6 +45,7 @@ t_sortie* t_sortie_init(int num)
 void t_sortie_destroy(t_sortie* sortie)
 {
 	t_pin_sortie_destroy(sortie->pin); //va libérer la memoire occupée par la pin de la fonction "sortie"
+	free(sortie->nom);//libère le bloc de memoire alloue pour le nom de la sortie
 	free(sortie); //libère le bloc de memoire alloue dynamiquement pour la fonction "sortie"
 }
 
