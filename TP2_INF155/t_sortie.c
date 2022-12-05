@@ -31,7 +31,7 @@ t_sortie* t_sortie_init(int num)
 	 
 	
 
-	nouvelle_sortie->pin = t_pin_entree_init; //Crée une nouvelle pin sortie.
+	nouvelle_sortie->pin = t_pin_entree_init(); //Crée une nouvelle pin sortie.
 
 	return nouvelle_sortie; //retourne le pointeur vers la sortie de circuit créée
 }
