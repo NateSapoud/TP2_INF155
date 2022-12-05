@@ -27,8 +27,9 @@ t_sortie* t_sortie_init(int num)
 
 	nouvelle_sortie->id = num; //la valeur "id" du struct "t_sortie" va prendre la valeur du numero que l'utilisateur a mis 
 
-	strcat(nom, num); //Le strcat concatène la chaine de charactere "nom" et la chaine "num"
-	nouvelle_sortie->nom = nom; //la valeur "nom" du stuct "t_sortie" va prendre les characteres du strcat. (va prendre, par exemple, S2\0, qui represente la sortie 2
+	nouvelle_sortie->nom = "S%d", num; //Le strcat concatène la chaine de charactere "nom" et la chaine "num"
+	 //la valeur "nom" du stuct "t_sortie" va prendre les characteres du strcat. (va prendre, par exemple, S2\0, qui represente la sortie 2
+	
 
 	nouvelle_sortie->pin = t_pin_sortie_init; //Crée une nouvelle pin sortie.
 
@@ -49,7 +50,6 @@ t_pin_entree* t_sortie_get_pin(t_sortie* sortie)
 
 int t_sortie_relier(t_sortie* dest, const t_pin_sortie* source) 
 {
-
 
 	t_pin_entree_relier(dest->pin,source);
 

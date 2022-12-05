@@ -31,8 +31,7 @@ t_entree* t_entree_init(int num)
 	nouvelle_entree->id = num;
 
 	//concatener le nom et l'id
-	strcat(nom, nouvelle_entree->id);
-	nouvelle_entree->nom = nom;
+	nouvelle_entree->nom = "E%d", num;
 
 	//initialiser une nouvelle pin de sortie
 	nouvelle_entree->pin = t_pin_sortie_init;

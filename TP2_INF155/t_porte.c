@@ -115,7 +115,7 @@ int t_porte_relier(t_porte* dest, int num_entree, const t_pin_sortie* source)
 		return 0;
 	}
 
-	t_pin_entree_relier(dest->entrees[num_entree], source->valeur); //Liaision de l'entree et sortie
+	t_pin_entree_relier(dest->entrees[num_entree], source); //Liaision de l'entree et sortie
 	return 1;
 }
 
@@ -123,7 +123,7 @@ int t_porte_est_reliee(t_porte* porte)
 {
 	if (porte->type == PORTE_NOT) //Verification que chaque pin sont utilise pour une porte NON
 	{
-		if (t_pin_entree_est_reliee(porte->entrees[0], porte->sortie) == 1 && t_pin_sortie_est_reliee(porte->sortie) == 1) 
+		if (t_pin_entree_est_reliee(porte->entrees[0]) == 1 && t_pin_sortie_est_reliee(porte->sortie) == 1) 
 		{
 			return 1;
 		}
@@ -135,7 +135,7 @@ int t_porte_est_reliee(t_porte* porte)
 
 	else //Verification que chaque pin sont utilise pour une porte OU, ET ou XOR
 	{
-		if (t_pin_entree_est_reliee(porte->entrees[0], porte->sortie) == 1 && t_pin_entree_est_reliee(porte->entrees[1], porte->sortie) == 1 && t_pin_sortie_est_reliee(porte->sortie) == 1)
+		if (t_pin_entree_est_reliee(porte->entrees[0]) == 1 && t_pin_entree_est_reliee(porte->entrees[1]) == 1 && t_pin_sortie_est_reliee(porte->sortie) == 1)
 		{
 			return 1;
 		}
@@ -165,7 +165,7 @@ int t_porte_propager_signal(t_porte* porte)
 	{
 		if (porte->type != PORTE_NOT) //Seulement lorsque nous avons une porte autre que la NON
 		{
-			if (t_pin_entree_est_reliee(porte->entrees[1] == 1)) //Verification que la pin 2 est utiliser
+			if (t_pin_entree_est_reliee(porte->entrees[1]) == 1) //Verification que la pin 2 est utiliser
 			{
 				t_pin_sortie_propager_signal(porte->sortie); //Propagation de la valeurs a notre sortie
 			}
