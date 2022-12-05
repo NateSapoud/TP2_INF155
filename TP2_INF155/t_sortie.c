@@ -47,13 +47,18 @@ t_pin_entree* t_sortie_get_pin(t_sortie* sortie)
 	return sortie->pin;
 }
 
-int t_sortie_relier(t_sortie* dest, const t_pin_sortie* source)
+int t_sortie_relier(t_sortie* dest, const t_pin_sortie* source) //a completer (doit retourner 0 s'il y a pas de liens
 {
+
+
 	t_pin_entree_relier(dest->pin,source);
+
+	return 1;
 
 	//t_pin_entree_relier(t_pin_entree * pin_entree, const t_pin_sortie * pin_sortie);
 	
 }
+
 
 
 
