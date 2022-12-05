@@ -16,6 +16,7 @@ Dernière modification: 2022-11-14
 #include "t_porte.h"
 
 
+
 t_porte* t_porte_init(int id, e_types_portes type)
 {
 	t_porte	*nouvelle_porte;
@@ -30,7 +31,16 @@ t_porte* t_porte_init(int id, e_types_portes type)
 	nouvelle_porte->id = id;
 	nouvelle_porte->sortie = t_pin_sortie_init();
 	nouvelle_porte->entrees[0] = t_pin_entree_init();
-	nouvelle_porte->nom = "P%d", nouvelle_porte->id;
+
+	nouvelle_porte->nom = (char*)malloc(sizeof(char) * NOM_SORTIE_TAILLE_MAX);
+	if (nouvelle_porte == NULL)
+	{
+		free(nouvelle_porte);
+		printf("Espace memoire epuisee pour la fonction nouvelle_sortie!");
+		system("pause");
+		exit(EXIT_FAILURE);
+	}
+	sprintf(nouvelle_porte->nom, "P%d", id);//Assignation du nom de la nouvelle porte
 	
 	if (type == PORTE_NOT) //Initialisation du nombre d'entree dependamment le type de la porte
 	{

@@ -13,6 +13,8 @@ Dernière modification: 2018-03-19
 #ifndef T_PORTE_H_
 #define T_PORTE_H_
 
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <string.h>
 #include <stdio.h>
 #include "t_pin_entree.h"
@@ -27,6 +29,7 @@ typedef struct t_circuit t_circuit;
 
 #define NOM_PORTE_TAILLE_MAX 10 //Taille maximale du nom d'une porte
 								//En nombre de caractères
+
 
 /*
 Énumération: E_TYPES_PORTES

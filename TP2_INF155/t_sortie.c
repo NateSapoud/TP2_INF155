@@ -15,7 +15,7 @@ Date: 2022-11-28
 t_sortie* t_sortie_init(int num)
 {
 	t_sortie* nouvelle_sortie; //Cree une nouvelle sortie
-	char nom[4] = "S"; //Nom de la sortie comportant 4 charactere; le premier qui est "S" (pour sortie), le deuxiemee et troisiem qui vont etre les chiffres, et le quatrieme qui est le \0
+	//Nom de la sortie comportant 4 charactere; le premier qui est "S" (pour sortie), le deuxiemee et troisiem qui vont etre les chiffres, et le quatrieme qui est le \0
 	nouvelle_sortie = (t_sortie*)malloc(sizeof(t_sortie));
 
 	if (nouvelle_sortie == NULL) //va verifier si la memoire est epuisee ou non. si elle est epuisee, quitte la fonction
@@ -26,9 +26,15 @@ t_sortie* t_sortie_init(int num)
 	}
 
 	nouvelle_sortie->id = num; //la valeur "id" du struct "t_sortie" va prendre la valeur du numero que l'utilisateur a mis 
-
-	nouvelle_sortie->nom = "S%d", num; //Assignation du nom de la nouvelle sortie
-	 
+	nouvelle_sortie->nom = (char*)malloc(sizeof(char) * NOM_SORTIE_TAILLE_MAX);
+	if (nouvelle_sortie == NULL)
+	{
+		free(nouvelle_sortie);
+		printf("Espace memoire epuisee pour la fonction nouvelle_sortie!");
+		system("pause");
+		exit(EXIT_FAILURE);
+	}
+	sprintf(nouvelle_sortie->nom, "S%d", num);//Assignation du nom de la nouvelle sortie
 	
 
 	nouvelle_sortie->pin = t_pin_entree_init(); //Crée une nouvelle pin sortie.

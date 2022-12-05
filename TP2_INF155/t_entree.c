@@ -30,11 +30,18 @@ t_entree* t_entree_init(int num)
 	//set l'id au num fourni
 	nouvelle_entree->id = num;
 
-	//concatener le nom et l'id
-	nouvelle_entree->nom = "E%d", num;
+	nouvelle_entree->nom = (char*)malloc(sizeof(char) * NOM_ENTREE_TAILLE_MAX);
+	if (nouvelle_entree == NULL)
+	{
+		free(nouvelle_entree);
+		printf("Espace memoire epuisee pour la fonction nouvelle_sortie!");
+		system("pause");
+		exit(EXIT_FAILURE);
+	}
+	sprintf(nouvelle_entree->nom, "E%d", num);//Assignation du nom de la nouvelle entree
 
 	//initialiser une nouvelle pin de sortie
-	nouvelle_entree->pin = t_pin_sortie_init;
+	nouvelle_entree->pin = t_pin_sortie_init();
 
 	return nouvelle_entree;
 

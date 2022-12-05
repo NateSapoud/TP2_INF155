@@ -13,10 +13,12 @@ Dernière modification: 2018-03-19
 #include "t_pin_entree.h"
 
 
+
 typedef struct t_pin_entree t_pin_entree;
 
 #define NOM_SORTIE_TAILLE_MAX 10 //Taille maximale du nom
 								 //de la sortie
+#define _CRT_SECURE_NO_WARNINGS
 
 struct t_sortie{
 	int id; //Identifiant numérique de la sortie de circuit.

@@ -165,12 +165,12 @@ void t_circuit_reset(t_circuit* circuit)
 
 	for (int i = 0; i < circuit->nb_entrees; i++)
 	{
-		t_sortie_reset(circuit->entrees[i]);
+		t_entree_reset(circuit->entrees[i]);
 	}
 
 	for (int i = 0; i < circuit->nb_sorties; i++)
 	{
-		t_entree_reset(circuit->sorties[i]);
+		t_sortie_reset(circuit->sorties[i]);
 	}
 }
 
