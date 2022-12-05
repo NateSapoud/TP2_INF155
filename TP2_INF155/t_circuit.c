@@ -66,6 +66,7 @@ t_porte* t_circuit_ajouter_porte(t_circuit* circuit, e_types_portes le_type)
 		return NULL;
 	}
 
+	circuit->portes[circuit->nb_portes] = nouvelle_porte; //ajoute l'entree au circuit
 	circuit->nb_portes++;
 
 	return nouvelle_porte;
@@ -81,6 +82,8 @@ t_entree* t_circuit_ajouter_entree(t_circuit* circuit)
 		{
 			return NULL;
 		}
+
+		circuit->entrees[circuit->nb_entrees] = nouvelle_entree; //ajoute l'entree au circuit
 		circuit->nb_entrees++;
 
 		return nouvelle_entree;
@@ -99,6 +102,8 @@ t_sortie* t_circuit_ajouter_sortie(t_circuit* circuit)
 		{
 			return NULL;
 		}
+
+		circuit->sorties[circuit->nb_sorties] = nouvelle_sortie; //ajoute sortie au circuit
 		circuit->nb_sorties++;
 
 		return nouvelle_sortie;
@@ -118,7 +123,7 @@ int t_circuit_est_valide(t_circuit* circuit)
 	//boucle qui regarde si chaque pin d'entree de chaque sortie est relier
 	for (int i = 0; i < circuit->nb_sorties; i++)
 	{
-		if (!t_pin_sortie_est_reliee(circuit->sorties[i]->pin))
+		if (!t_pin_entree_est_reliee(circuit->sorties[i]->pin))
 			return 0;
 	}
 
@@ -126,7 +131,7 @@ int t_circuit_est_valide(t_circuit* circuit)
 	{
 		for (int k = 0; k < circuit->portes[i]->nb_entrees; k++)
 		{
-			if (!t_pin_sortie_est_reliee(circuit->portes[i]->entrees[k]))
+			if (!t_pin_entree_est_reliee(circuit->portes[i]->entrees[k]))
 				return 0;
 		}
 
@@ -160,12 +165,12 @@ void t_circuit_reset(t_circuit* circuit)
 
 	for (int i = 0; i < circuit->nb_entrees; i++)
 	{
-		t_entree_reset(circuit->entrees[i]);
+		t_sortie_reset(circuit->entrees[i]);
 	}
 
 	for (int i = 0; i < circuit->nb_sorties; i++)
 	{
-		t_sortie_reset(circuit->sorties[i]);
+		t_entree_reset(circuit->sorties[i]);
 	}
 }
 
