@@ -165,6 +165,14 @@ Retour: Booléen: vrai si le signal a pu se propager (i.e. toutes les entrées ont
 int t_porte_propager_signal(t_porte *porte);
 
 
+
+/*
+Fonction: T_PORTE_GET_PIN_SORTIE
+Description: Accesseur - Retourne un pointeur vers la pin_sortie de la porte.
+Paramètres:
+- porte: Pointeur vers la porte dont on veut accéder à la pin_sortie.
+Retour: Pointeur vers pin_sortie de la porte/
+*/
 t_pin_sortie* t_porte_get_pin_sortie(t_porte* porte);
 
 #endif

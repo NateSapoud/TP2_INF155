@@ -18,6 +18,7 @@ Dernière modification: 2018-03-19
 #ifndef T_PIN_ENTREE_H_
 #define T_PIN_ENTREE_H_
 
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdlib.h>
 #include "t_pin_sortie.h"
 

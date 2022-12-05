@@ -177,3 +177,8 @@ int t_porte_propager_signal(t_porte* porte)
 	}
 }
 
+t_pin_sortie* t_porte_get_pin_sortie(t_porte* porte)
+{
+	return porte->sortie;
+}
+
