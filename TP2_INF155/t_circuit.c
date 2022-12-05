@@ -201,7 +201,6 @@ int t_circuit_propager_signal(t_circuit* circuit)
 	while (file->nb_elts > 0 && nb_iterations < pow(circuit->nb_portes, 2))
 	{
 		porte_courante = t_file_porte_defiler(file);
-		t_porte_propager_signal(porte_courante);
 
 		if (!t_porte_propager_signal(porte_courante))
 		{
