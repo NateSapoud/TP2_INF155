@@ -53,7 +53,10 @@ int t_sortie_relier(t_sortie* dest, const t_pin_sortie* source) //a completer (d
 
 	t_pin_entree_relier(dest->pin,source);
 
-	return 1;
+	if (t_pin_entree_est_reliee(dest->pin))
+		return 1;
+	else
+		return 0;
 
 	//t_pin_entree_relier(t_pin_entree * pin_entree, const t_pin_sortie * pin_sortie);
 	
